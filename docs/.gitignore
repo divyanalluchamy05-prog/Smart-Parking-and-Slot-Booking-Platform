@@ -1,0 +1,17 @@
+# Java / Spring Boot
+target/
+*.class
+*.jar
+
+# React
+node_modules/
+build/
+
+# VS Code
+.vscode/
+
+# Environment
+.env
+
+# Logs
+*.log
