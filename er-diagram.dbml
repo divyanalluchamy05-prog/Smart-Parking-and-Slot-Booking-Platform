@@ -1,0 +1,44 @@
+Table users {
+  user_id int [pk, increment]
+  name varchar
+  email varchar [unique]
+  password varchar
+  role varchar
+}
+
+Table parking_lots {
+  lot_id int [pk, increment]
+  lot_name varchar
+  location varchar
+  total_slots int
+}
+
+Table parking_slots {
+  slot_id int [pk, increment]
+  slot_number varchar
+  status varchar
+  lot_id int [ref: > parking_lots.lot_id]
+}
+
+Table bookings {
+  booking_id int [pk, increment]
+  booking_time timestamp
+  start_time timestamp
+  end_time timestamp
+  user_id int [ref: > users.user_id]
+  slot_id int [ref: > parking_slots.slot_id]
+}
+
+Table parking_sessions {
+  session_id int [pk, increment]
+  check_in timestamp
+  check_out timestamp
+  booking_id int [ref: > bookings.booking_id]
+}
+
+Table payments {
+  payment_id int [pk, increment]
+  amount decimal
+  payment_status varchar
+  booking_id int [ref: > bookings.booking_id]
+}
